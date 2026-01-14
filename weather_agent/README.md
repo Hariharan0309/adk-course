@@ -21,3 +21,6 @@ Ensure you have the Google ADK installed and configured.
    ```bash
    adk web
    ```
+
+## Video Tutorial
+[Watch the tutorial](https://youtu.be/yROS8NklcK0)
