@@ -11,6 +11,15 @@ This agent utilizes the `gemini-2.5-flash` model and is equipped with a custom t
 - **Tool Use:** Demonstrates how to define and register python functions as tools for the agent.
 - **Robustness:** Includes custom HTTP retry options for model inference.
 
+## Configuration
+
+Create a `.env` file inside the `weather_agent` directory with the following content:
+
+```env
+GOOGLE_GENAI_USE_VERTEXAI=0
+GOOGLE_API_KEY=YOUR_API_KEY
+```
+
 ## How to Run
 
 Ensure you have the Google ADK installed and configured.
