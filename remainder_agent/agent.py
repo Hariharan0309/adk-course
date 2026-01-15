@@ -3,7 +3,7 @@ import os
 from dotenv import load_dotenv
 from google.adk.agents import Agent
 from google.adk.models.google_llm import Gemini
-from google.adk.sessions import DatabaseSessionService
+from google.adk.sessions import DatabaseSessionService, InMemorySessionService
 from google.adk.runners import Runner
 from google.genai import types
 from utils import run_interactive_session
@@ -60,6 +60,8 @@ root_agent = Agent(
 
 db_url = "sqlite+aiosqlite:///my_agent_data.db"  # Local SQLite file
 session_service = DatabaseSessionService(db_url=db_url)
+
+# session_service = InMemorySessionService()
 
 runner = Runner(agent=root_agent, app_name=APP_NAME, session_service=session_service)
 
