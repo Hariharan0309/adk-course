@@ -1,0 +1,17 @@
+# Google ADK with A2A support
+google-adk[a2a]>=1.0.0
+
+# A2A SDK — for wrapping non-ADK agents (LangGraph, LangChain, etc.)
+a2a-sdk[http-server]>=0.2.0
+
+# LangGraph + LangChain (for the cross-framework demo agent)
+langgraph>=0.2.0
+langchain-core>=0.2.0
+langchain-google-genai>=1.0.0
+
+# HTTP utilities
+requests>=2.31.0
+uvicorn>=0.30.0
+
+# Environment variables
+python-dotenv>=1.0.0

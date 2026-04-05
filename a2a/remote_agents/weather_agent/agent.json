@@ -1,0 +1,35 @@
+{
+  "capabilities": {
+    "streaming": true
+  },
+  "defaultInputModes": [
+    "text"
+  ],
+  "defaultOutputModes": [
+    "text"
+  ],
+  "description": "Provides real-time weather data for any city worldwide using the Open-Meteo API.",
+  "name": "weather_agent",
+  "preferredTransport": "JSONRPC",
+  "protocolVersion": "0.3.0",
+  "skills": [
+    {
+      "description": "Fetches current temperature, wind speed, and sky conditions for any city. No API key required.",
+      "examples": [
+        "What is the weather in Tokyo?",
+        "Is it raining in London?",
+        "How cold is it in New York?"
+      ],
+      "id": "get_weather",
+      "name": "Get Weather",
+      "tags": [
+        "weather",
+        "temperature",
+        "climate",
+        "city"
+      ]
+    }
+  ],
+  "url": "http://localhost:8001/a2a/weather_agent",
+  "version": "1.0.0"
+}
