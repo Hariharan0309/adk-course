@@ -28,12 +28,14 @@ A2A makes cross-framework communication transparent.
 ## Setup
 
 ### 1. Install dependencies
+
 ```bash
 cd adk-course/a2a
 pip install -r requirements.txt
 ```
 
 ### 2. Configure environment
+
 ```bash
 cp .env.example .env
 # Edit .env and add your GOOGLE_API_KEY
@@ -44,45 +46,53 @@ cp .env.example .env
 You need **3 terminals** running simultaneously:
 
 ### Terminal 1 — Start the Weather Agent (ADK → A2A)
+
 ```bash
 cd adk-course
 adk api_server --a2a --port 8001 a2a/remote_agents
 ```
 
 Verify it's running:
+
 ```bash
 curl http://localhost:8001/a2a/weather_agent/.well-known/agent-card.json
 ```
 
 ### Terminal 2 — Start the Travel Facts Agent (LangGraph → A2A)
+>
 > Note: run from INSIDE `a2a/` to avoid package name conflict with `a2a-sdk`
+
 ```bash
-cd adk-course/a2a
+cd ssa2a
 python -m joke_agent
 ```
 
 Verify it's running:
+
 ```bash
 curl http://localhost:8002/.well-known/agent-card.json
 ```
 
-### Terminal 3 — Start the Travel Concierge (ADK root agent)
+### Terminal 3 — Start the Travel Concierge (In the list of agents select the Travel Concierge)
+
 ```bash
 cd adk-course
-adk web a2a/travel_concierge
+adk web a2a
 ```
 
-Open **http://localhost:8000** in your browser and chat!
+Open **<http://localhost:8000>** in your browser and chat!
 
 ## Example Conversations
 
 Try these prompts in the Travel Concierge chat:
 
 **Single agent delegation:**
+
 - `"What's the weather like in Tokyo right now?"`  → delegates to Weather Agent
 - `"Tell me interesting facts about Paris"` → delegates to Travel Facts Agent
 
 **Multi-agent orchestration (the best demo!):**
+
 - `"I'm planning a trip to Barcelona next week. Give me a full travel brief!"`
 - `"Help me decide between visiting Iceland or Morocco"`
 - `"Plan a trip to New York — weather and things to know"`
@@ -90,7 +100,9 @@ Try these prompts in the Travel Concierge chat:
 ## How A2A Works — Key Concepts
 
 ### 1. Agent Card (Agent Discovery)
+
 Every A2A agent publishes a JSON "business card" at `/.well-known/agent.json`:
+
 ```json
 {
   "name": "Travel Facts Agent",
@@ -102,12 +114,14 @@ Every A2A agent publishes a JSON "business card" at `/.well-known/agent.json`:
 ```
 
 ### 2. Exposing an ADK Agent via A2A
+
 ```bash
 # ADK CLI automatically wraps your agent and starts an A2A server
 adk api_server --a2a --port 8001 a2a/weather_agent
 ```
 
 ### 3. Exposing a LangGraph Agent via A2A
+
 ```python
 # Use the a2a-sdk to wrap any framework
 from a2a.server.apps import A2AStarletteApplication
@@ -120,6 +134,7 @@ class MyExecutor(AgentExecutor):
 ```
 
 ### 4. Consuming Remote Agents in ADK
+
 ```python
 from google.adk.agents.remote_a2a_agent import RemoteA2aAgent
 
